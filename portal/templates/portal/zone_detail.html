@@ -1,0 +1,31 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Detalle de zona{% endblock %}
+{% block content %}
+<div class="page content-page">
+  <div class="container wide">
+    <a class="back-link" href="{% url 'home' %}">← Volver al mapa</a>
+    <h1>{{ zone.name }} — {{ energy_label }}</h1>
+    <p class="subtitle">Escala temporal: {{ scale_label }}</p>
+    <div class="tab-row compact">
+      <a class="tab-link {% if time_scale == 'anual' %}active{% endif %}" href="{% url 'zone_detail' zone.id energy_type 'anual' %}">Anual</a>
+      <a class="tab-link {% if time_scale == 'estacional' %}active{% endif %}" href="{% url 'zone_detail' zone.id energy_type 'estacional' %}">Estacional</a>
+      <a class="tab-link {% if time_scale == 'mensual' %}active{% endif %}" href="{% url 'zone_detail' zone.id energy_type 'mensual' %}">Mensual</a>
+      <a class="tab-link {% if time_scale == 'diaria' %}active{% endif %}" href="{% url 'zone_detail' zone.id energy_type 'diaria' %}">Diaria</a>
+    </div>
+    <div class="card">
+      <canvas id="zone-chart" height="130"></canvas>
+    </div>
+  </div>
+</div>
+<script>
+window.ZONE_DETAIL = {
+  zone: {{ zone_json|safe }},
+  energyType: "{{ energy_type }}",
+  timeScale: "{{ time_scale }}"
+};
+</script>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'portal/js/zone_detail.js' %}"></script>
+{% endblock %}

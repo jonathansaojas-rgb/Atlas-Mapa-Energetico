@@ -1,0 +1,55 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Mapa energético{% endblock %}
+{% block content %}
+<div class="page map-page">
+  <div class="toolbar-wrap">
+    <div class="toolbar">
+      <button class="toolbar-btn active" data-layer="viento">Velocidad del viento</button>
+      <button class="toolbar-btn" data-layer="dni">DNI</button>
+      <button class="toolbar-btn" data-layer="ghi">GHI</button>
+    </div>
+    <a class="toolbar-link complementarity" href="{% url 'complementarity' %}">Complementariedad</a>
+    <div class="toolbar-dropdown">
+      <button class="toolbar-link" id="factor-toggle" type="button">Factor de planta ▾</button>
+      <div class="dropdown-menu" id="factor-menu">
+        <a href="{% url 'plant_factor' 'eolico' %}">Eólico</a>
+        <a href="{% url 'plant_factor' 'fotovoltaico' %}">Fotovoltaico</a>
+        <a href="{% url 'plant_factor' 'fototermico' %}">Fototérmico</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="map"></div>
+
+  <div class="legend-stack">
+    <div class="legend-box">
+      <div class="legend-title">Líneas de transmisión</div>
+      <div class="legend-item"><span class="legend-line red"></span>400 kV</div>
+      <div class="legend-item"><span class="legend-line orange"></span>230 kV</div>
+      <div class="legend-item"><span class="legend-line yellow"></span>≤ 161 kV</div>
+    </div>
+
+    <div class="legend-box raster-legend" id="raster-legend" data-layer="viento">
+      <div class="legend-title" id="raster-legend-title">Velocidad del viento</div>
+      <div class="legend-subtitle" id="raster-legend-units">m/s</div>
+      <div class="raster-scale" id="raster-scale"></div>
+      <div class="raster-range">
+        <span id="raster-min">0</span>
+        <span id="raster-max">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="zone-popup" class="zone-popup hidden"></div>
+</div>
+<script>
+  window.PORTAL_ZONES = {{ zones_json|safe }};
+  window.PORTAL_URLS = {
+    zoneDetailBase: "{% url 'zone_detail' 'bcs' 'eolica' 'anual' %}"
+  };
+</script>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'portal/js/map.js' %}"></script>
+{% endblock %}

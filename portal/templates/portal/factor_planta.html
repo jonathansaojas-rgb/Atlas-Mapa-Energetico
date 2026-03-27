@@ -1,0 +1,27 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Factor de planta{% endblock %}
+{% block content %}
+<div class="page content-page">
+  <div class="container">
+    <a class="back-link" href="{% url 'home' %}">← Volver al mapa</a>
+    <h1>{{ active_title }}</h1>
+    <p class="subtitle">Factor de planta por región (%)</p>
+    <div class="tab-row">
+      <a class="tab-link {% if tipo == 'eolico' %}active{% endif %}" href="{% url 'plant_factor' 'eolico' %}">Eólico</a>
+      <a class="tab-link {% if tipo == 'fotovoltaico' %}active{% endif %}" href="{% url 'plant_factor' 'fotovoltaico' %}">Fotovoltaico</a>
+      <a class="tab-link {% if tipo == 'fototermico' %}active{% endif %}" href="{% url 'plant_factor' 'fototermico' %}">Fototérmico</a>
+    </div>
+    <div class="card">
+      <canvas id="factor-chart" height="140"></canvas>
+    </div>
+  </div>
+</div>
+<script>
+window.FACTOR_DATA = {{ factor_data_json|safe }};
+window.ACTIVE_FACTOR = "{{ tipo }}";
+</script>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'portal/js/factor_planta.js' %}"></script>
+{% endblock %}

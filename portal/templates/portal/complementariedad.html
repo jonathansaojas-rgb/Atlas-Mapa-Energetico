@@ -1,0 +1,22 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Complementariedad{% endblock %}
+{% block content %}
+<div class="page content-page">
+  <div class="container">
+    <a class="back-link" href="{% url 'home' %}">← Volver al mapa</a>
+    <h1>Complementariedad</h1>
+    <p class="subtitle">Análisis de complementariedad entre recursos eólico y solar.</p>
+    <div class="card">
+      <h2>Perfil mensual de recursos</h2>
+      <canvas id="complement-chart" height="120"></canvas>
+    </div>
+  </div>
+</div>
+<script>
+window.COMPLEMENTARIEDAD_DATA = {{ monthly_data_json|safe }};
+</script>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'portal/js/complementariedad.js' %}"></script>
+{% endblock %}

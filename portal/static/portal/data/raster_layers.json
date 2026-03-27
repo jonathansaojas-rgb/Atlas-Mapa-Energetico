@@ -1,0 +1,125 @@
+{
+  "viento": {
+    "image": "/static/portal/data/rasters/viento.png",
+    "bounds": [
+      [
+        11.851249999999975,
+        -122.20124999999999
+      ],
+      [
+        32.73874999999998,
+        -84.62124999999997
+      ]
+    ],
+    "legend": {
+      "label": "Velocidad del viento",
+      "units": "m/s",
+      "min": 2.67,
+      "max": 7.83,
+      "stops": [
+        {
+          "value": 2.25,
+          "color": "#b7f7d0"
+        },
+        {
+          "value": 3.78,
+          "color": "#eef6a5"
+        },
+        {
+          "value": 5.31,
+          "color": "#f6b167"
+        },
+        {
+          "value": 6.84,
+          "color": "#ec79a6"
+        },
+        {
+          "value": 8.37,
+          "color": "#8d4ed6"
+        }
+      ]
+    }
+  },
+  "dni": {
+    "image": "/static/portal/data/rasters/dni.png",
+    "bounds": [
+      [
+        14.0,
+        -119.0
+      ],
+      [
+        33.0,
+        -86.0
+      ]
+    ],
+    "legend": {
+      "label": "DNI",
+      "units": "kWh/m²/día",
+      "min": 4.02,
+      "max": 7.7,
+      "stops": [
+        {
+          "value": 3.68,
+          "color": "#253494"
+        },
+        {
+          "value": 4.72,
+          "color": "#3ba8c1"
+        },
+        {
+          "value": 5.75,
+          "color": "#d1edc0"
+        },
+        {
+          "value": 6.79,
+          "color": "#fdc466"
+        },
+        {
+          "value": 7.82,
+          "color": "#bd0026"
+        }
+      ]
+    }
+  },
+  "ghi": {
+    "image": "/static/portal/data/rasters/ghi.png",
+    "bounds": [
+      [
+        14.0,
+        -119.0
+      ],
+      [
+        33.0,
+        -86.0
+      ]
+    ],
+    "legend": {
+      "label": "GHI",
+      "units": "kWh/m²/día",
+      "min": 4.99,
+      "max": 6.18,
+      "stops": [
+        {
+          "value": 4.8,
+          "color": "#132b43"
+        },
+        {
+          "value": 5.16,
+          "color": "#2a879d"
+        },
+        {
+          "value": 5.52,
+          "color": "#74ae47"
+        },
+        {
+          "value": 5.87,
+          "color": "#f08b26"
+        },
+        {
+          "value": 6.23,
+          "color": "#a50026"
+        }
+      ]
+    }
+  }
+}
