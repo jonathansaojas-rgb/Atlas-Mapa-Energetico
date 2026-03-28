@@ -2,9 +2,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dev-key-change-me'
-DEBUG = True
-ALLOWED_HOSTS = []
+import os
 
+DEBUG = os.environ.get("DEBUG", "False") == "True"
+
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app"]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
